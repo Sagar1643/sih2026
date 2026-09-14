@@ -1,0 +1,10 @@
+{
+  "description": "Generates complete project solutions from single prompts, featuring Indian farmer and village imagery to enhance cultural relevance and user engagement.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

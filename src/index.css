@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+/* ── Neural Noir Design System — Dark Only ─────────────────────── */
+:root {
+  --gold-base:  #a78b71;
+  --gold-light: #c9b8a0;
+  --gold-hover: #e8d5b7;
+  --gold-dim:   rgba(167,139,113,0.14);
+  --gold-glow:  rgba(167,139,113,0.22);
+
+  --bg:         #0a0a0a;
+  --bg-2:       #111111;
+  --bg-3:       #181818;
+  --surface:    rgba(255,255,255,0.03);
+  --surface-2:  rgba(255,255,255,0.065);
+  --border:     rgba(255,255,255,0.08);
+  --border-gold:rgba(167,139,113,0.32);
+  --text:       #f0ece6;
+  --text-dim:   rgba(240,236,230,0.52);
+  --text-muted: rgba(240,236,230,0.28);
+  --input-bg:   rgba(255,255,255,0.04);
+
+  --green: #22c55e;
+  --amber: #f59e0b;
+  --red:   #ef4444;
+  --blue:  #38bdf8;
+
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+/* ── Dot grid ──────────────────────────────────────────────────── */
+.dot-grid { background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 32px 32px; }
+
+/* ── Glassmorphism ─────────────────────────────────────────────── */
+.glass {
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: border-color 0.25s, background 0.25s;
+}
+.glass:hover { border-color: rgba(167,139,113,0.28); }
+.glass-sm {
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+.glass-deep { background: rgba(10,10,10,0.72); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 20px; }
+
+.gold-card {
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-gold);
+  border-radius: 22px;
+  box-shadow: 0 0 60px var(--gold-glow), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ── Typography ────────────────────────────────────────────────── */
+.font-serif        { font-family: 'Fraunces', Georgia, serif; }
+.font-serif-italic { font-family: 'Fraunces', Georgia, serif; font-style: italic; }
+
+/* ── Gold tokens ───────────────────────────────────────────────── */
+.text-gold       { color: var(--gold-base); }
+.text-gold-light { color: var(--gold-light); }
+
+/* ── Inputs ────────────────────────────────────────────────────── */
+.nn-input {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  color: var(--text);
+  padding: 11px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.nn-input::placeholder { color: var(--text-muted); }
+.nn-input:focus { border-color: var(--gold-base); box-shadow: 0 0 0 3px rgba(167,139,113,0.12); }
+.nn-input option { background: #181818; color: #f0ece6; }
+
+/* Date input: hide native calendar on webkit, keep functionality */
+.nn-input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0; width: 100%; position: absolute; right: 0; cursor: pointer; }
+.date-wrap { position: relative; }
+.date-wrap .nn-input { padding-right: 40px; cursor: pointer; }
+.date-icon { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--gold-base); }
+
+/* ── Buttons ───────────────────────────────────────────────────── */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-base), var(--gold-light));
+  color: #0a0a0a;
+  font-weight: 700;
+  border: none;
+  border-radius: 100px;
+  padding: 13px 28px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  white-space: nowrap;
+}
+.btn-gold:hover { background: linear-gradient(135deg, var(--gold-light), var(--gold-hover)); transform: translateY(-1px); box-shadow: 0 8px 24px var(--gold-glow); }
+.btn-gold:active { transform: translateY(0); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-outline:hover { border-color: var(--gold-base); color: var(--gold-light); }
+
+.btn-sm { padding: 7px 16px !important; font-size: 11px !important; border-radius: 100px; }
+.btn-danger { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 600; font-family: 'Inter',sans-serif; transition: all 0.2s; letter-spacing: 0.02em; }
+.btn-danger:hover { background: rgba(239,68,68,0.22); }
+.btn-amber { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 600; font-family: 'Inter',sans-serif; transition: all 0.2s; letter-spacing: 0.02em; }
+.btn-amber:hover { background: rgba(245,158,11,0.22); }
+.btn-green { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.25); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 11px; font-weight: 600; font-family: 'Inter',sans-serif; transition: all 0.2s; letter-spacing: 0.02em; }
+.btn-green:hover { background: rgba(34,197,94,0.22); }
+
+/* ── Badges ────────────────────────────────────────────────────── */
+.badge-green  { background:rgba(34,197,94,0.12); color:#22c55e; border:1px solid rgba(34,197,94,0.25); border-radius:6px; padding:3px 10px; font-size:10px; font-weight:700; display:inline-block; letter-spacing:0.04em; text-transform:uppercase; }
+.badge-amber  { background:rgba(245,158,11,0.12); color:#f59e0b; border:1px solid rgba(245,158,11,0.25); border-radius:6px; padding:3px 10px; font-size:10px; font-weight:700; display:inline-block; letter-spacing:0.04em; text-transform:uppercase; }
+.badge-red    { background:rgba(239,68,68,0.12); color:#ef4444; border:1px solid rgba(239,68,68,0.25); border-radius:6px; padding:3px 10px; font-size:10px; font-weight:700; display:inline-block; letter-spacing:0.04em; text-transform:uppercase; }
+.badge-gold   { background:var(--gold-dim); color:var(--gold-light); border:1px solid var(--border-gold); border-radius:6px; padding:3px 10px; font-size:10px; font-weight:700; display:inline-block; letter-spacing:0.04em; text-transform:uppercase; }
+.badge-blue   { background:rgba(56,189,248,0.12); color:#38bdf8; border:1px solid rgba(56,189,248,0.25); border-radius:6px; padding:3px 10px; font-size:10px; font-weight:700; display:inline-block; letter-spacing:0.04em; text-transform:uppercase; }
+
+/* ── Pulse ─────────────────────────────────────────────────────── */
+.pulse-dot { width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-live 2s infinite;display:inline-block;flex-shrink:0; }
+@keyframes pulse-live { 0%{box-shadow:0 0 0 0 rgba(34,197,94,0.4)} 70%{box-shadow:0 0 0 9px rgba(34,197,94,0)} 100%{box-shadow:0 0 0 0 rgba(34,197,94,0)} }
+
+/* ── Neural SVG path ───────────────────────────────────────────── */
+@keyframes dash-flow { to { stroke-dashoffset: -1000; } }
+.anim-path { stroke-dasharray:8 6; animation:dash-flow 12s linear infinite; }
+
+/* ── Entrance ──────────────────────────────────────────────────── */
+@keyframes fade-up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.fade-up   { animation: fade-up 0.6s cubic-bezier(0.4,0,0.2,1) both; }
+.fade-up-1 { animation-delay:0.07s; }
+.fade-up-2 { animation-delay:0.14s; }
+.fade-up-3 { animation-delay:0.22s; }
+.fade-up-4 { animation-delay:0.30s; }
+
+/* ── Cinematic image card ──────────────────────────────────────── */
+.cin-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4/5;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 700ms cubic-bezier(0.16,1,0.3,1), box-shadow 700ms cubic-bezier(0.16,1,0.3,1);
+}
+.cin-card:hover { border-color: rgba(167,139,113,0.5); box-shadow: 0 0 40px rgba(167,139,113,0.2), 0 20px 60px rgba(0,0,0,0.6); }
+.cin-img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) brightness(0.85) contrast(0.9);
+  transform: scale(1.0);
+  transition: filter 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1);
+}
+.cin-card:hover .cin-img { filter: grayscale(0%) brightness(1.0) contrast(1.0); transform: scale(1.05); }
+.cin-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 50%, transparent 100%); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1); }
+.cin-card:hover .cin-overlay { opacity: 0.7; }
+.cin-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px; }
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(167,139,113,0.25); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-base); }
+
+/* ── Token ring ────────────────────────────────────────────────── */
+.token-ring { border:2px solid var(--gold-base); border-radius:50%; padding:16px; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 0 36px var(--gold-glow); }
+
+/* ── Tabs ──────────────────────────────────────────────────────── */
+.tab-pill-active { background: linear-gradient(135deg,var(--gold-base),var(--gold-light)); color:#0a0a0a; }
+.tab-pill        { background: transparent; color: var(--text-dim); }
+.tab-pill, .tab-pill-active { border:none; border-radius:100px; padding:8px 20px; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif; white-space:nowrap; letter-spacing:0.03em; }
+
+/* ── Progress bar ──────────────────────────────────────────────── */
+.progress-track { height:4px; background:var(--surface-2); border-radius:100px; overflow:hidden; }
+.progress-fill  { height:100%; background:linear-gradient(90deg,var(--gold-base),var(--gold-light)); border-radius:100px; transition:width 0.7s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── QR code container ─────────────────────────────────────────── */
+.qr-wrap { background:#111; border-radius:20px; padding:18px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--border-gold); box-shadow:0 0 32px var(--gold-glow); }
+
+/* ── Icon container ────────────────────────────────────────────── */
+.icon-box { width:40px; height:40px; border-radius:12px; background:var(--gold-dim); border:1px solid var(--border-gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
